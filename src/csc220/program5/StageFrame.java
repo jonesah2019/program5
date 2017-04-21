@@ -38,7 +38,7 @@ public class StageFrame extends javax.swing.JFrame {
         initComponents();
         characters = new List<>();
         characters.add(new csc220.program5.sample.RoundHead(10, 30, 50, 1000));
-        characters.add(new csc220.program5.jonesah2019.Robot(30, 90, 50, 400));
+        characters.add(new csc220.program5.jonesah2019.Robot(30, 20, 35, 400));
         camera = new Camera();
         chosenCharacter = null;
         gameOver = false;
