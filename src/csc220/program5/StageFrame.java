@@ -38,7 +38,7 @@ public class StageFrame extends javax.swing.JFrame {
         initComponents();
         characters = new List<>();
         characters.add(new csc220.program5.sample.RoundHead(10, 30, 50, 1000));
-        characters.add(new csc220.program5.jonesah2019.Robot(30, 20, 35, 400));
+        characters.add(new csc220.program5.jonesah2019.Robot(200, 150, 35, 2000));
         camera = new Camera();
         chosenCharacter = null;
         gameOver = false;
@@ -127,6 +127,7 @@ public class StageFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startPauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPauseButtonActionPerformed
+        
         if (gameOver) 
              return;
         if (startPauseButton.getText().equals("Pause")) {
@@ -146,6 +147,7 @@ public class StageFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_startPauseButtonActionPerformed
 
     private void stagePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stagePanelMouseClicked
+        
         if (gameOver)
             return;
         if (chosenCharacter != null) {
@@ -165,6 +167,7 @@ public class StageFrame extends javax.swing.JFrame {
                return;
             }
         }
+        
     }//GEN-LAST:event_stagePanelMouseClicked
 
     /**
