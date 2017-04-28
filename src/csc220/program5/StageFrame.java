@@ -20,6 +20,7 @@ package csc220.program5;
 
 import csc220.drawing.Camera;
 import csc220.list.List;
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -37,7 +38,7 @@ public class StageFrame extends javax.swing.JFrame {
     public StageFrame() {
         initComponents();
         characters = new List<>();
-        characters.add(new csc220.program5.jonesah2019.Robot(10, 10, 35, 1000));
+        characters.add(new csc220.program5.jonesah2019.Robot(Color.BLACK, Color.RED, Color.GRAY, 10, 10, 35, 1000));
         camera = new Camera();
         chosenCharacter = null;
         gameOver = false;
