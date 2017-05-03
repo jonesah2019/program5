@@ -75,19 +75,27 @@ public class List<E> extends csc220.list.List<E> {
         public void remove() {
             
             printNodes("Remove under construction");
+            if(prevNode == null){
+                throw new NoSuchElementException();
+            }
             
+            Node<E> tmp;
             if(prevNode != first && prevNode != null){
-                Node<E> tmp = first;
+                tmp = first;
                 while(tmp.next != prevNode){
                     tmp = tmp.next;
                 }
                 tmp.next = nextNode;
-                
             } else {
-                prevNode = prevNode.next;
-                first = prevNode;
+                tmp = prevNode.next;
+                first = tmp;
+                if(nextNode != null){
+                    nextNode = nextNode.next;
+                    tmp.next = nextNode;
+                }
             }
             prevNode = null;
+            
             
         }
    
