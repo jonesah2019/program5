@@ -24,6 +24,9 @@ import java.awt.Point;
      'bodyColor', eyes that are the color of 'eyeColor', and limbs the color of
      'limbColor'.
 
+     Note: This character only calls the clickAction when it is clicked on its 
+      head. The body will not register any clicks.
+
  */
 public class Robot extends GameCharacter {
 
