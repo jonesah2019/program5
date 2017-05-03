@@ -92,6 +92,8 @@ public class List<E> extends csc220.list.List<E> {
                 if(nextNode != null){
                     nextNode = nextNode.next;
                     tmp.next = nextNode;
+                } else{
+                    last = null;
                 }
             }
             prevNode = null;
