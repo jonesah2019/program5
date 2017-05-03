@@ -7,6 +7,7 @@ package csc220.program5.jonesah2019;
 
 import csc220.list.AddIterator;
 import java.awt.Point;
+import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -74,19 +75,19 @@ public class ListTest {
         Boolean pF;
         pF = (testIt.next() == a);
         if(pF == true){
-            pF = (testIt.next() == c);
+            pF = (testIt.next().equals(c));
         }
         if(pF == true){
-            pF = (testIt.next() == b);
+            pF = (testIt.next().equals(b));
         }
         if(pF == true){
-            pF = (testIt.next() == b);
+            pF = (testIt.next().equals(b));
         }
         if(pF == true){
-            pF = (testIt.next() == c);
+            pF = (testIt.next().equals(c));
         }
         if(pF == true){
-            pF = (testIt.next() == a);
+            pF = (testIt.next().equals(a));
         }
         
         assertTrue(pF);
@@ -100,41 +101,80 @@ public class ListTest {
         Point b = new Point(2, 2);
         Point c = new Point(3, 3);
         
-        List<Point> test1, test2;
+        List<Point> test1, test2, test3, test4, test5;
         test1 = new csc220.program5.jonesah2019.List<>();
         test2 = new csc220.program5.jonesah2019.List<>();
+        test3 = new csc220.program5.jonesah2019.List<>();
+        test4 = new csc220.program5.jonesah2019.List<>();
+        test5 = new csc220.program5.jonesah2019.List<>();
         test1.add(a);
         test1.add(b);
         test1.add(c);
         test2.add(a);
         test2.add(b);
         test2.add(c);
+        test3.add(a);
+        test3.add(b);
+        test3.add(c);
+        test4.add(a);
         
         AddIterator testIt1 = test1.addIterator();
         AddIterator testIt2 = test2.addIterator();
+        AddIterator testIt3 = test3.addIterator();
+        AddIterator testIt4 = test4.addIterator();
+        AddIterator testIt5 = test5.addIterator();
         
-        // Test scenario 1
+        
+        // Test scenario 1 - removal of first node
         Boolean tF1;
         testIt1.next();
         testIt1.remove();
         testIt1 = test1.addIterator();
-        tF1 = (b == testIt1.next());
+        tF1 = (testIt1.next().equals(b));
         if(tF1 == true){
-            tF1 = (c == testIt1.next());
+            tF1 = (testIt1.next().equals(c));
         }
         assertTrue(tF1);
         
-        // Test scenario 2
+        // Test scenario 2 - removal of middle node
         Boolean tF2;
         testIt2.next();
         testIt2.next();
         testIt2.remove();
         testIt2 = test2.addIterator();
-        tF2 = (a == testIt2.next());
+        tF2 = (testIt2.next().equals(a));
         if(tF2 == true){
-            tF2 = (c == testIt2.next());
+            tF2 = (testIt2.next().equals(c));
         }
         assertTrue(tF2);
+        
+        // Test scenario 3 - removal of last node of list
+        Boolean tF3;
+        testIt3.next();
+        testIt3.next();
+        testIt3.next();
+        testIt3.remove();
+        testIt3 = test3.addIterator();
+        tF3 = (testIt3.next().equals(a));
+        if(tF3 == true){
+            tF3 = (testIt3.next().equals(b));
+        }
+        assertTrue(tF3);
+        
+        // Test scenario 4 - removal of last node left in list
+        testIt4.next();
+        testIt4.remove();
+        assertFalse(testIt4.hasNext());
+        
+        // Test scenario 5 - empty list
+        Boolean thrown = false;
+        try {
+            testIt5.remove();
+        } catch (NoSuchElementException e) {
+            thrown = true;
+        }
+
+        assertTrue(thrown);
         
     }
 
